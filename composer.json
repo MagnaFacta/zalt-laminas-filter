@@ -1,0 +1,57 @@
+{
+  "name": "magnafacta/zalt-lib-template",
+  "description": "Zend Alternative Library template",
+  "type": "library",
+  "require": {
+    "php": ">=8.1.0",
+    "magnafacta/zalt-util": "dev-main"
+  },
+  "require-dev": {
+    "phpstan/phpstan": "1.*",
+    "phpunit/phpunit": "10.*"
+  },
+  "authors": [
+    {
+      "name": "Matijs de Jong",
+      "email": "mjong@magnafacta.nl"
+    }
+  ],
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "Zalt\\Lib\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Zalt\\Lib\\": "test\\"
+    }
+  },
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/MagnaFacta/zalt-late.git"
+    },
+    {
+      "type": "git",
+      "url": "https://github.com/MagnaFacta/zalt-loader.git"
+    },
+    {
+      "type": "git",
+      "url": "https://github.com/MagnaFacta/zalt-model.git"
+    },
+    {
+      "type": "git",
+      "url": "https://github.com/MagnaFacta/zalt-util.git"
+    }
+  ],
+  "scripts": {
+    "test": [
+      "@putenv XDEBUG_MODE=coverage",
+      "vendor/bin/phpunit --configuration test/phpunit.xml test"
+    ],
+    "stan": [
+      "vendor/bin/phpstan"
+    ]
+  }
+}
