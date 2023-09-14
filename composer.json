@@ -1,5 +1,5 @@
 {
-  "name": "magnafacta/zalt-lib-template",
+  "name": "magnafacta/zalt-laminas-filter",
   "description": "Zend Alternative Laminas Filters",
   "type": "library",
   "require": {

@@ -17,7 +17,7 @@ use PHPUnit\Framework\TestCase;
  * @subpackage
  * @since      Class available since version 1.0
  */
-class ExampleTest extends TestCase
+class CleanEmailFilterTest extends TestCase
 {
     public function testSomething()
     {
