@@ -4,30 +4,29 @@ declare(strict_types=1);
 
 /**
  * @package    test
- * @subpackage
+ * @subpackage Dutch
  * @author     Matijs de Jong <mjong@magnafacta.nl>
  */
 
-namespace test;
+namespace test\Dutch;
 
-use PHPUnit\Framework\TestCase;
-use Zalt\Filter\CleanEmailFilter;
+use Zalt\Filter\Dutch\BurgerservicenummerFilter;
 
 /**
  * @package    test
- * @subpackage
+ * @subpackage Dutch
  * @since      Class available since version 1.0
  */
-class CleanEmailFilterTest extends TestCase
+class BurgerservicenummerFilterTest extends \PHPUnit\Framework\TestCase
 {
     public static function provideFilters()
     {
         return [
-            'normal' => ['test@test.mail', 'test@test.mail'],
-            'mailto' => ['mailto:test@test.mail', 'test@test.mail'],
-            'space' => [' test @t est. mail ', 'test@test.mail'],
-            'withName' => ['test test <test@test.mail>', 'test@test.mail'],
-            'all' => ['mailto:test test <mailto:test@test.mail > ', 'test@test.mail'],
+            'normal' => ['123456789', '123456789'],
+            'padzero' => ['1', '000000001'],
+            'space' => [' 12', '000000012'],
+            'spaceX' => [' X123', '000000123'],
+            'stars' => ['*********', '*********'],
             'null' => [null, null],
             'empty' => ['', ''],
         ];
@@ -41,7 +40,7 @@ class CleanEmailFilterTest extends TestCase
      */
     public function testFilter($input, $output)
     {
-        $filter = new CleanEmailFilter();
+        $filter = new BurgerservicenummerFilter();
         $this->assertEquals($output, $filter->filter($input));
     }
 }

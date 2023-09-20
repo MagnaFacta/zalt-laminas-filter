@@ -4,30 +4,28 @@ declare(strict_types=1);
 
 /**
  * @package    test
- * @subpackage
+ * @subpackage Dutch
  * @author     Matijs de Jong <mjong@magnafacta.nl>
  */
 
-namespace test;
+namespace test\Dutch;
 
-use PHPUnit\Framework\TestCase;
-use Zalt\Filter\CleanEmailFilter;
+use Zalt\Filter\Dutch\PostcodeFilter;
 
 /**
  * @package    test
- * @subpackage
+ * @subpackage Dutch
  * @since      Class available since version 1.0
  */
-class CleanEmailFilterTest extends TestCase
+class PostcodeFilterTest extends \PHPUnit\Framework\TestCase
 {
     public static function provideFilters()
     {
         return [
-            'normal' => ['test@test.mail', 'test@test.mail'],
-            'mailto' => ['mailto:test@test.mail', 'test@test.mail'],
-            'space' => [' test @t est. mail ', 'test@test.mail'],
-            'withName' => ['test test <test@test.mail>', 'test@test.mail'],
-            'all' => ['mailto:test test <mailto:test@test.mail > ', 'test@test.mail'],
+            'normal' => ['3063 CC', '3063 CC'],
+            'space' => ['3063CC', '3063 CC'],
+            'uk' => ['CCS366', 'CCS366'],
+            'de' => ['12345', '12345'],
             'null' => [null, null],
             'empty' => ['', ''],
         ];
@@ -41,7 +39,7 @@ class CleanEmailFilterTest extends TestCase
      */
     public function testFilter($input, $output)
     {
-        $filter = new CleanEmailFilter();
+        $filter = new PostcodeFilter();
         $this->assertEquals($output, $filter->filter($input));
     }
 }

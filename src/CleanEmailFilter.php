@@ -36,10 +36,12 @@ class CleanEmailFilter implements \Laminas\Filter\FilterInterface
         $endsearch = '>';
 
         $startpos = stripos($value, $startsearch);
-        $endpos = stripos($value, $endsearch, $startpos);
+        if (false !== $startpos) {
+            $endpos = stripos($value, $endsearch, $startpos);
 
-        if ($startpos !== false && $endpos) {
-            $value = trim(substr($value, $startpos + strlen($startsearch), $endpos - $startpos - strlen($startsearch)));
+            if ($endpos) {
+                $value = trim(substr($value, $startpos + strlen($startsearch), $endpos - $startpos - strlen($startsearch)));
+            }
         }
 
         return $value;

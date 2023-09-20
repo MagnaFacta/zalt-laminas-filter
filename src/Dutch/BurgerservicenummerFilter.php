@@ -25,10 +25,10 @@ class BurgerservicenummerFilter extends \Laminas\Filter\Digits
         $newValue = parent::filter($value);
 
         if (intval($newValue)) {
-            return str_pad($newValue, 9, '0', STR_PAD_LEFT);
+            return (string) str_pad($newValue, 9, '0', STR_PAD_LEFT);
         }
 
         // Return as is when e.g. ********* or nothing
-        return $value;
+        return (string) $value;
     }
 }
