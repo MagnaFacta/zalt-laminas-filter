@@ -10,11 +10,9 @@ class NegativeDigits extends Digits
 {
     public function filter($value)
     {
-        $isNegative = str_starts_with('-', $value);
-
         $filteredValue = parent::filter($value);
 
-        if ($isNegative) {
+        if (!is_int($value) && str_starts_with((string) $value, '-')) {
             return '-' . $filteredValue;
         }
 
