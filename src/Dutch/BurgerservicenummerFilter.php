@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Zalt\Filter\Dutch;
 
 use Laminas\Filter\AbstractFilter;
+use Laminas\Filter\Digits;
 
 /**
  * @package    Zalt
