@@ -10,19 +10,22 @@ declare(strict_types=1);
 
 namespace Zalt\Filter\Dutch;
 
+use Laminas\Filter\AbstractFilter;
+
 /**
  * @package    Zalt
  * @subpackage Filter\Dutch
  * @since      Class available since version 1.0
  */
-class BurgerservicenummerFilter extends \Laminas\Filter\Digits
+class BurgerservicenummerFilter extends AbstractFilter
 {
     /**
      * @inheritDoc
      */
     public function filter($value)
     {
-        $newValue = parent::filter($value);
+        $digitsFilter = new Digits();
+        $newValue = $digitsFilter->filter($value);
 
         if (intval($newValue)) {
             return (string) str_pad($newValue, 9, '0', STR_PAD_LEFT);
