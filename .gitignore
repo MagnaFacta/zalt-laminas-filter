@@ -1,4 +1,6 @@
 composer.phar
+/composer.json
 /vendor/
 /test/.phpunit.cache
 /test/html-coverage
+/.idea
