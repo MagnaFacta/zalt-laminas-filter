@@ -35,7 +35,10 @@ class Integer extends AbstractFilter
         if (is_int($value)) {
             return (string) $value;
         }
-        if (! is_float($value) && ! is_string($value)) {
+        if (is_float($value)) {
+            return (string) intval($value);
+        }
+        if (! is_string($value)) {
             return $value;
         }
         $value = (string) $value;

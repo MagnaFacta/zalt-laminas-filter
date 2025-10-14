@@ -35,8 +35,8 @@ class IntegerTest extends \PHPUnit\Framework\TestCase
             'negative floatstring with e' => ['-123.456e7', '-1234567'],
             'int' => [123, '123'],
             'negative int' => [-123, '-123'],
-            'float' => [123.456, '123456'],
-            'negative float' => [-123.456, '-123456'],
+            'float' => [123.456, '123'],
+            'negative float' => [-123.456, '-123'],
             'null' => [null, null],
             'empty' => ['', ''],
         ];
