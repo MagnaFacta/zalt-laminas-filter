@@ -29,14 +29,16 @@ class IntegerTest extends \PHPUnit\Framework\TestCase
             'text with negative' => ['abc-123', '-123'],
             'text with negative in middle' => ['abc-123-456', '-123456'],
             'text with positive in middle' => ['abc123-456', '123456'],
-            'floatstring' => ['123.456', '123456'],
-            'negative floatstring' => ['-123.456', '-123456'],
-            'floatstring with e' => ['123.456e7', '1234567'],
-            'negative floatstring with e' => ['-123.456e7', '-1234567'],
+            'floatstring' => ['123.456', '123'],
+            'negative floatstring' => ['-123.456', '-123'],
+            'floatstring with e' => ['123.456e7', '123'], // Exponent notation not supported for strings
+            'negative floatstring with e' => ['-123.456e7', '-123'], // Exponent notation not supported for strings
             'int' => [123, '123'],
             'negative int' => [-123, '-123'],
             'float' => [123.456, '123'],
             'negative float' => [-123.456, '-123'],
+            'float with e' => [123.456e7, '1234560000'],
+            'float with negative e' => [123.456e-7, '0'],
             'null' => [null, null],
             'empty' => ['', ''],
         ];

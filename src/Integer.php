@@ -43,6 +43,10 @@ class Integer extends AbstractFilter
         }
         $value = (string) $value;
 
+        if (($dotPos = strpos($value, '.')) !== false) {
+            $value = substr($value, 0, $dotPos);
+        }
+
         if (! StringUtils::hasPcreUnicodeSupport()) {
             // POSIX named classes are not supported, use alternative 0-9 match
             $pattern = '/[^0-9-]/';
